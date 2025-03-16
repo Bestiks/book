@@ -101,39 +101,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Обработчики для кнопок "Читать подробнее"
-    const readMoreButtons = document.querySelectorAll('.read-more');
-    readMoreButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            const bookCard = button.closest('.book-card');
-            const title = bookCard.querySelector('h3').textContent;
-            const author = bookCard.querySelector('.author').textContent;
-            const description = bookCard.querySelector('.description').textContent;
-            const image = bookCard.querySelector('img').src;
-
-            showBookModal({
-                title,
-                author,
-                description,
-                image
-            });
-        });
+    // Обработчик для кнопок "Читать подробнее"
+    const readMoreLinks = document.querySelectorAll('.read-more');
+    
+    // Удаляем существующие обработчики перед добавлением новых
+    readMoreLinks.forEach(link => {
+        link.removeEventListener('click', handleReadMore);
+    });
+    
+    // Функция обработки клика по кнопке
+    function handleReadMore(e) {
+        e.preventDefault();
+        const bookCard = this.closest('.book-card');
+        const bookInfo = {
+            title: bookCard.querySelector('h3').textContent,
+            author: bookCard.querySelector('.author').textContent,
+            description: bookCard.querySelector('.description').textContent,
+            image: bookCard.querySelector('.book-cover img').src
+        };
+        showBookModal(bookInfo);
+    }
+    
+    // Добавляем новые обработчики
+    readMoreLinks.forEach(link => {
+        link.addEventListener('click', handleReadMore);
     });
 
-    // Обработчик для ссылок "читать подробнее"
-    const readMoreLinks = document.querySelectorAll('.read-more');
-    readMoreLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault(); // Предотвращаем стандартное поведение ссылки
-            const bookInfo = {
-                title: link.closest('.book-info').querySelector('h3').textContent,
-                author: link.closest('.book-info').querySelector('.author').textContent,
-                description: link.closest('.book-info').querySelector('.description').textContent,
-                image: link.closest('.book-card').querySelector('.book-cover img').src
-            };
-            showBookModal(bookInfo);
-        });
+    // Удаляем старые обработчики, так как они дублируются
+    const readMoreButtons = document.querySelectorAll('.read-more');
+    readMoreButtons.forEach(button => {
+        button.removeEventListener('click', handleReadMore);
     });
 });
 
@@ -396,6 +393,12 @@ window.addEventListener('scroll', () => {
 });
 
 function showBookModal(bookInfo) {
+    // Удаляем существующее модальное окно, если оно есть
+    const existingModal = document.querySelector('.book-modal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+
     const modal = document.createElement('div');
     modal.className = 'book-modal';
     modal.innerHTML = `
@@ -418,16 +421,25 @@ function showBookModal(bookInfo) {
     document.body.appendChild(modal);
     document.body.style.overflow = 'hidden';
 
+    // Закрытие модального окна
     const closeBtn = modal.querySelector('.close-modal');
-    closeBtn.addEventListener('click', () => {
+    const closeModal = () => {
         modal.remove();
         document.body.style.overflow = '';
-    });
+    };
 
+    closeBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
-            modal.remove();
-            document.body.style.overflow = '';
+            closeModal();
+        }
+    });
+    
+    // Добавляем обработчик клавиши Escape
+    document.addEventListener('keydown', function handleEscape(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+            document.removeEventListener('keydown', handleEscape);
         }
     });
 }
