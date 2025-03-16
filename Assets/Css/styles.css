@@ -1,0 +1,2165 @@
+:root {
+    --primary-color: #2A2A2A;
+    --accent-color: #646cff;
+    --text-color: #333;
+    --background-color: #f5f5f5;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: relative;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    text-decoration: none;
+    z-index: 1002;
+    transition: var(--transition);
+}
+
+.logo:hover {
+    color: #535bf2;
+    transform: translateY(-1px);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: var(--transition);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Hero Sections */
+.hero,
+.books-hero,
+.about-hero {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #646cff 0%, #1a1a1a 100%);
+    color: white;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    margin: 0;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: 30px;
+}
+
+.cta-button:hover {
+    background: white;
+    color: var(--accent-color);
+}
+
+/* Featured Books Section */
+.featured-books {
+    padding: 6rem 2rem;
+    background: white;
+}
+
+.featured-books h2 {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 2.5rem;
+}
+
+.book-container {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.book {
+    position: relative;
+    width: 300px;
+    perspective: 1000px;
+}
+
+.book-cover {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.book:hover .book-cover {
+    transform: rotateY(10deg);
+}
+
+.book-cover img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.book-details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Interactive Book */
+.interactive-book {
+    padding: 6rem 2rem;
+    background: #f8f9fa;
+    text-align: center;
+}
+
+.book-wrapper {
+    margin: 4rem auto;
+    max-width: 1000px;
+    perspective: 2000px;
+}
+
+.realistic-book {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    transform-style: preserve-3d;
+    transform: rotateX(10deg);
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+}
+
+.book-spine {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 100%;
+    background: linear-gradient(to right, #2c3e50, #3498db);
+    transform: rotateY(-90deg) translateX(-20px);
+    transform-origin: left;
+}
+
+.page-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.book-page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    padding: 2rem 3rem;
+    box-shadow: 0 0 30px rgba(0,0,0,0.1);
+    transform-origin: left;
+    transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    border-radius: 0 4px 4px 0;
+    overflow: hidden;
+    backface-visibility: hidden;
+}
+
+.page-content {
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.8s ease;
+}
+
+.book-page.turned + .book-page .page-content,
+.page-1 .page-content {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.page-image {
+    width: 100%;
+    height: 400px;
+    margin: 2rem 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.8s ease 0.2s;
+}
+
+.book-page.turned + .book-page .page-image,
+.page-1 .page-image {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.page-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.book-page h3 {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease 0.1s;
+}
+
+.book-page.turned + .book-page h3,
+.page-1 h3 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.book-page p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease 0.3s;
+}
+
+.book-page.turned + .book-page p,
+.page-1 p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.page-number {
+    position: absolute;
+    bottom: 2rem;
+    right: 3rem;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.book-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.nav-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.nav-btn:hover {
+    background: #535bf2;
+    transform: translateY(-2px);
+}
+
+.nav-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.page-counter {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* Начальное положение страниц */
+.page-1 { 
+    transform: rotateY(0deg);
+    z-index: 3;
+}
+
+.page-2 { 
+    transform: rotateY(0deg);
+    z-index: 2;
+    visibility: hidden;
+}
+
+.page-3 { 
+    transform: rotateY(0deg);
+    z-index: 1;
+    visibility: hidden;
+}
+
+/* Состояния страниц */
+.book-page.turned {
+    transform: rotateY(-180deg);
+    visibility: visible;
+}
+
+.book-page.turned + .book-page {
+    visibility: visible;
+    z-index: 3;
+}
+
+/* Анимация переворота */
+.book-page.turning {
+    animation: turnPage 1s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+    visibility: visible;
+}
+
+.book-page.turning + .book-page {
+    visibility: visible;
+    z-index: 3;
+}
+
+@keyframes turnPage {
+    0% { 
+        transform: rotateY(0);
+        z-index: 3;
+    }
+    100% { 
+        transform: rotateY(-180deg);
+        z-index: 1;
+    }
+}
+
+/* Эффект тени при повороте */
+.book-page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    background: linear-gradient(to left, rgba(0,0,0,0.2), transparent);
+    transition: width 0.5s ease;
+}
+
+.book-page.turning::after {
+    width: 100%;
+}
+
+/* Collection Section */
+.collection {
+    padding: 6rem 2rem;
+    background: white;
+}
+
+.collection h2 {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 2.5rem;
+}
+
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.collection-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: var(--transition);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.collection-item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.collection-item:hover img {
+    transform: scale(1.05);
+}
+
+.collection-item h3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    text-align: center;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 2000;
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    margin: 5% auto;
+    padding: 2rem;
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 10px;
+}
+
+.close-modal {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.modal-books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.modal-book {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.modal-book img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.modal-book-info {
+    padding: 1rem;
+}
+
+.modal-book-info h3 {
+    margin-bottom: 0.5rem;
+}
+
+.modal-book-info p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Footer */
+footer {
+    background: var(--primary-color);
+    color: white;
+    padding: 4rem 2rem 2rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.footer-section {
+    flex: 1;
+}
+
+.footer-section:first-child {
+    flex: 2;
+}
+
+.footer-section:last-child {
+    text-align: right;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.footer-section p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-section:last-child {
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* Общие стили для всех мобильных устройств */
+@media (max-width: 1024px) {
+    .book-wrapper {
+        max-width: 100%;
+        margin: 1rem auto;
+        padding: 0;
+        perspective: 1000px;
+    }
+
+    .realistic-book {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        transform-style: preserve-3d;
+        background: transparent;
+    }
+
+    .book-spine {
+        display: none;
+    }
+
+    .book-page {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 1.5rem;
+        background: #ffffff;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        transform-origin: left;
+        transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+        border-radius: 15px;
+        backface-visibility: hidden;
+        visibility: hidden;
+    }
+
+    .page-1 {
+        visibility: visible;
+    }
+
+    .page-content {
+        padding: 1.5rem;
+        background: #ffffff;
+        margin: 0 auto;
+        max-width: 100%;
+        opacity: 0;
+        transform: translateX(30px);
+        transition: all 0.4s ease;
+    }
+
+    .book-page.turned + .book-page .page-content,
+    .page-1 .page-content {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .page-image {
+        width: 100%;
+        height: auto;
+        max-height: 40vh;
+        margin: 1.5rem 0;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        opacity: 0;
+        transform: scale(0.95);
+        transition: all 0.4s ease 0.2s;
+    }
+
+    .book-page.turned + .book-page .page-image,
+    .page-1 .page-image {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .page-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 10px;
+    }
+
+    .book-page h3 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 1.5rem;
+        text-align: left;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s ease 0.1s;
+    }
+
+    .book-page.turned + .book-page h3,
+    .page-1 h3 {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .book-page p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: #333;
+        margin-bottom: 1.5rem;
+        text-align: left;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s ease 0.3s;
+    }
+
+    .book-page.turned + .book-page p,
+    .page-1 p {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .page-number {
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #666;
+        margin-top: 2rem;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.4s ease 0.4s;
+    }
+
+    .book-page.turned + .book-page .page-number,
+    .page-1 .page-number {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .book-controls {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 1rem;
+        box-shadow: 0 -2px 15px rgba(0,0,0,0.1);
+        margin: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 2rem;
+        backdrop-filter: blur(10px);
+    }
+
+    .nav-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+        background: var(--accent-color);
+        color: white;
+        border-radius: 50%;
+        box-shadow: 0 4px 10px rgba(100, 108, 255, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .nav-btn:active {
+        transform: scale(0.95);
+    }
+
+    .nav-btn:disabled {
+        background: #ccc;
+        box-shadow: none;
+    }
+
+    .page-counter {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+        padding: 0.5rem 1rem;
+        background: rgba(100, 108, 255, 0.1);
+        border-radius: 20px;
+    }
+
+    /* Состояния страниц */
+    .book-page.turned {
+        transform: rotateY(-180deg);
+        visibility: visible;
+    }
+
+    .book-page.turned + .book-page {
+        visibility: visible;
+        z-index: 3;
+    }
+
+    /* Анимация переворота */
+    .book-page.turning {
+        animation: turnPageMobile 0.6s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+        visibility: visible;
+    }
+
+    .book-page.turning + .book-page {
+        visibility: visible;
+        z-index: 3;
+    }
+
+    @keyframes turnPageMobile {
+        0% { 
+            transform: rotateY(0);
+            z-index: 3;
+        }
+        100% { 
+            transform: rotateY(-180deg);
+            z-index: 1;
+        }
+    }
+}
+
+/* Планшеты (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .book-page {
+        padding: 2rem;
+    }
+
+    .page-content {
+        padding: 2rem;
+    }
+
+    .page-image {
+        max-height: 45vh;
+    }
+
+    .book-page h3 {
+        font-size: 2.2rem;
+    }
+
+    .book-page p {
+        font-size: 1.3rem;
+    }
+
+    .nav-btn {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+}
+
+/* Мобильные устройства (до 767px) */
+@media (max-width: 767px) {
+    .book-page {
+        padding: 1rem;
+    }
+
+    .page-content {
+        padding: 1rem;
+    }
+
+    .page-image {
+        max-height: 35vh;
+    }
+
+    .book-page h3 {
+        font-size: 1.8rem;
+    }
+
+    .book-page p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    .nav-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+}
+
+/* Маленькие мобильные устройства (до 480px) */
+@media (max-width: 480px) {
+    .book-page {
+        padding: 0.8rem;
+    }
+
+    .page-content {
+        padding: 0.8rem;
+    }
+
+    .page-image {
+        max-height: 30vh;
+    }
+
+    .book-page h3 {
+        font-size: 1.6rem;
+    }
+
+    .book-page p {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .nav-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Адаптивность для малых экранов */
+@media (max-width: 360px) {
+    /* Навигация */
+    .nav-content {
+        padding: 0.7rem;
+    }
+    
+    .logo {
+        font-size: 1.1rem;
+    }
+    
+    .burger-menu {
+        width: 20px;
+        height: 16px;
+        margin-right: 0;
+    }
+    
+    .burger-menu span:nth-child(2) { top: 7px; }
+    .burger-menu span:nth-child(3) { top: 14px; }
+    
+    /* Мобильное меню */
+    .mobile-nav {
+        width: 100%;
+        padding: 60px 1rem 1.5rem;
+    }
+    
+    .mobile-nav .nav-links {
+        gap: 0.5rem;
+    }
+    
+    .mobile-nav .nav-links a {
+        font-size: 1rem;
+        padding: 0.7rem;
+    }
+
+    /* Основной контент */
+    .hero h1,
+    .books-hero h1,
+    .about-hero h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .hero p,
+    .books-hero p,
+    .about-hero p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    /* Секции */
+    .featured-books,
+    .collection,
+    .about-story,
+    .team-section,
+    .mission-section {
+        padding: 3rem 1rem;
+    }
+
+    .featured-books h2,
+    .collection h2,
+    .about-story h2,
+    .team-section h2,
+    .mission-section h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Карточки книг */
+    .book-card {
+        max-width: 100%;
+    }
+
+    .book-cover {
+        height: 300px;
+    }
+
+    .book-info {
+        padding: 1rem;
+    }
+
+    .book-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .book-info .description {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    /* Фильтры */
+    .category-filters {
+        gap: 0.5rem;
+        margin: 1rem 0;
+        padding: 0.5rem;
+    }
+
+    .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    /* Команда */
+    .team-grid {
+        gap: 1.5rem;
+    }
+
+    .member-photo {
+        height: 200px;
+    }
+
+    .member-info {
+        padding: 1rem;
+    }
+
+    .member-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .member-info .position {
+        font-size: 1rem;
+    }
+
+    .member-info .bio {
+        font-size: 0.9rem;
+    }
+
+    /* Интерактивная книга */
+    .book-page {
+        padding: 0.7rem;
+    }
+
+    .page-content {
+        padding: 0.7rem;
+    }
+
+    .book-page h3 {
+        font-size: 1.4rem;
+    }
+
+    .book-page p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .page-counter {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Дополнительные исправления для самых маленьких экранов */
+@media (max-width: 320px) {
+    .nav-content {
+        padding: 0.6rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .burger-menu {
+        width: 18px;
+        height: 14px;
+    }
+
+    .burger-menu span:nth-child(2) { top: 6px; }
+    .burger-menu span:nth-child(3) { top: 12px; }
+
+    .mobile-nav {
+        padding: 55px 0.8rem 1rem;
+    }
+
+    .mobile-nav .nav-links a {
+        font-size: 0.95rem;
+        padding: 0.6rem;
+    }
+
+    .hero h1,
+    .books-hero h1,
+    .about-hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .hero p,
+    .books-hero p,
+    .about-hero p {
+        font-size: 0.9rem;
+    }
+
+    .featured-books h2,
+    .collection h2,
+    .about-story h2,
+    .team-section h2,
+    .mission-section h2 {
+        font-size: 1.4rem;
+    }
+
+    .book-cover {
+        height: 250px;
+    }
+
+    .filter-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+
+    .nav-btn {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Animations */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+.book {
+    animation: float 6s ease-in-out infinite;
+}
+
+.page-content {
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.6s ease;
+}
+
+.book-page.turned + .book-page .page-content,
+.page-1 .page-content {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.page-image {
+    width: 100%;
+    height: 400px;
+    margin: 2rem 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.6s ease 0.2s;
+}
+
+.book-page.turned + .book-page .page-image,
+.page-1 .page-image {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.page-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.book-page h3 {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease 0.1s;
+}
+
+.book-page.turned + .book-page h3,
+.page-1 h3 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.book-page p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease 0.3s;
+}
+
+.book-page.turned + .book-page p,
+.page-1 p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.page-number {
+    position: absolute;
+    bottom: 2rem;
+    right: 3rem;
+    font-size: 1.2rem;
+    color: #666;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.6s ease 0.4s;
+}
+
+.book-page.turned + .book-page .page-number,
+.page-1 .page-number {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Начальное положение страниц */
+.page-1 { 
+    transform: rotateY(0deg);
+    z-index: 3;
+}
+
+.page-2 { 
+    transform: rotateY(0deg);
+    z-index: 2;
+    visibility: hidden;
+}
+
+.page-3 { 
+    transform: rotateY(0deg);
+    z-index: 1;
+    visibility: hidden;
+}
+
+/* Состояния страниц */
+.book-page.turned {
+    transform: rotateY(-180deg);
+    visibility: visible;
+}
+
+.book-page.turned + .book-page {
+    visibility: visible;
+    z-index: 3;
+}
+
+/* Анимация переворота */
+.book-page.turning {
+    animation: turnPage 1s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+    visibility: visible;
+}
+
+.book-page.turning + .book-page {
+    visibility: visible;
+    z-index: 3;
+}
+
+/* Бургер-меню */
+.burger-menu {
+    display: none;
+    width: 24px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1002;
+    position: relative;
+    margin-left: auto;
+    margin-right: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.burger-menu span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.burger-menu span:nth-child(1) { top: 0; }
+.burger-menu span:nth-child(2) { top: 9px; }
+.burger-menu span:nth-child(3) { top: 18px; }
+
+.burger-menu.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 9px;
+}
+
+.burger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 9px;
+}
+
+/* Мобильная навигация */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: white;
+    padding: 80px 1.5rem 2rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1001;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    overflow-y: auto;
+}
+
+.mobile-nav.active {
+    transform: translateX(0);
+}
+
+.mobile-nav .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mobile-nav .nav-links li {
+    width: 100%;
+}
+
+.mobile-nav .nav-links a {
+    display: block;
+    padding: 0.8rem 1rem;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav .nav-links a:hover {
+    background: rgba(100, 108, 255, 0.1);
+    color: var(--accent-color);
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Адаптивность навигации */
+@media (max-width: 768px) {
+    .nav-content {
+        padding: 1rem 1.5rem;
+    }
+    
+    .nav-content .nav-links {
+        display: none;
+    }
+    
+    .burger-menu {
+        display: block;
+    }
+    
+    .logo {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-content {
+        padding: 0.8rem 1rem;
+    }
+    
+    .mobile-nav {
+        width: 100%;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .burger-menu {
+        width: 22px;
+        height: 18px;
+    }
+    
+    .burger-menu span:nth-child(2) {
+        top: 8px;
+    }
+    
+    .burger-menu span:nth-child(3) {
+        top: 16px;
+    }
+}
+
+@media (max-width: 320px) {
+    .nav-content {
+        padding: 0.7rem 0.8rem;
+    }
+    
+    .logo {
+        font-size: 1.1rem;
+    }
+    
+    .burger-menu {
+        width: 20px;
+        height: 16px;
+    }
+    
+    .burger-menu span:nth-child(2) {
+        top: 7px;
+    }
+    
+    .burger-menu span:nth-child(3) {
+        top: 14px;
+    }
+    
+    .mobile-nav {
+        padding: 70px 1rem 1.5rem;
+    }
+    
+    .mobile-nav .nav-links a {
+        font-size: 1rem;
+        padding: 0.7rem 0.8rem;
+    }
+}
+
+/* Основной контент */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+}
+
+/* Стили для страницы книг */
+.books-hero {
+    height: 60vh;
+    background: linear-gradient(135deg, #646cff 0%, #1a1a1a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-top: 60px;
+}
+
+.books-categories {
+    padding: 4rem 2rem;
+    background: white;
+    text-align: center;
+}
+
+.books-categories h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.category-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+    padding: 1rem;
+}
+
+.filter-btn {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid var(--accent-color);
+    background: transparent;
+    color: var(--accent-color);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    font-weight: 500;
+    outline: none;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(100, 108, 255, 0.3);
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.book-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.book-card.hidden {
+    display: none;
+}
+
+.book-cover {
+    height: 400px;
+    overflow: hidden;
+}
+
+.book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.book-card:hover .book-cover img {
+    transform: scale(1.05);
+}
+
+.book-info {
+    padding: 1.5rem;
+}
+
+.book-info h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.book-info .author {
+    color: #666;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.book-info .description {
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.read-more {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.read-more:hover {
+    background: #535bf2;
+    transform: translateY(-2px);
+}
+
+/* Стили для страницы О нас */
+.about-hero {
+    height: 60vh;
+    background: linear-gradient(135deg, #646cff 0%, #1a1a1a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-top: 60px;
+}
+
+.about-story {
+    padding: 6rem 2rem;
+    background: white;
+}
+
+.timeline {
+    max-width: 800px;
+    margin: 4rem auto;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--accent-color);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.year {
+    width: 120px;
+    text-align: center;
+    padding: 1rem;
+    background: var(--accent-color);
+    color: white;
+    border-radius: 30px;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -20px;
+}
+
+.event {
+    width: calc(50% - 50px);
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.event h3 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.event p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.team-section {
+    padding: 6rem 2rem;
+    background: #f8f9fa;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.team-member {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+}
+
+.member-photo {
+    height: 300px;
+    overflow: hidden;
+}
+
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.member-info {
+    padding: 2rem;
+}
+
+.member-info h3 {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.member-info .position {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.member-info .bio {
+    color: #666;
+    line-height: 1.6;
+}
+
+.mission-section {
+    padding: 6rem 2rem;
+    background: white;
+}
+
+.mission-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.mission-content p {
+    color: #666;
+    line-height: 1.8;
+    margin: 2rem 0;
+}
+
+.mission-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item h3 {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.stat-item p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 30px;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        margin-left: 50px;
+    }
+
+    .timeline-item:nth-child(even) {
+        flex-direction: column;
+    }
+
+    .year {
+        left: 30px;
+        transform: translateX(-50%);
+    }
+
+    .event {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .category-filters {
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .book-card {
+        margin: 0 auto;
+        max-width: 350px;
+    }
+
+    .books-categories h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .books-hero,
+    .about-hero {
+        height: 40vh;
+    }
+
+    .timeline-item {
+        margin-left: 30px;
+    }
+
+    .year {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+        width: 100px;
+    }
+
+    .event {
+        padding: 1.5rem;
+    }
+
+    .member-photo {
+        height: 250px;
+    }
+
+    .member-info {
+        padding: 1.5rem;
+    }
+
+    .stat-item h3 {
+        font-size: 2rem;
+    }
+
+    .books-categories h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Стили для страницы книг */
+.books-hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.books-hero p {
+    font-size: 2rem;
+    opacity: 0.9;
+}
+
+/* Стили для страницы О нас */
+.about-hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-hero p {
+    font-size: 2rem;
+    opacity: 0.9;
+}
+
+.about-story h2,
+.team-section h2,
+.mission-section h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.event h3 {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.event p {
+    font-size: 1.2rem;
+    color: #666;
+    line-height: 1.8;
+}
+
+.member-info h3 {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-bottom: 0.8rem;
+}
+
+.member-info .position {
+    font-size: 1.3rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.member-info .bio {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+}
+
+.mission-content p {
+    font-size: 1.3rem;
+    color: #666;
+    line-height: 1.8;
+    margin: 2rem 0;
+}
+
+/* Медиа-запросы для адаптивности текста */
+@media (max-width: 768px) {
+    .books-hero h1,
+    .about-hero h1 {
+        font-size: 3rem;
+    }
+
+    .books-hero p,
+    .about-hero p {
+        font-size: 1.5rem;
+    }
+
+    .about-story h2,
+    .team-section h2,
+    .mission-section h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .books-hero h1,
+    .about-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .books-hero p,
+    .about-hero p {
+        font-size: 1.2rem;
+    }
+
+    .about-story h2,
+    .team-section h2,
+    .mission-section h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Анимация для карточек книг */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+.book-card.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.book-card.fade-out {
+    animation: fadeOut 0.5s ease forwards;
+}
+
+/* Медиа-запрос для экранов 360-480px */
+@media (min-width: 361px) and (max-width: 480px) {
+    /* Навигация */
+    .nav-content {
+        padding: 0.8rem;
+    }
+    
+    .logo {
+        font-size: 1.15rem;
+    }
+    
+    .burger-menu {
+        width: 21px;
+        height: 17px;
+        margin-right: 0;
+    }
+    
+    .burger-menu span:nth-child(2) { top: 7.5px; }
+    .burger-menu span:nth-child(3) { top: 15px; }
+    
+    /* Мобильное меню */
+    .mobile-nav {
+        width: 100%;
+        padding: 65px 1.2rem 1.5rem;
+    }
+    
+    .mobile-nav .nav-links {
+        gap: 0.6rem;
+    }
+    
+    .mobile-nav .nav-links a {
+        font-size: 1.05rem;
+        padding: 0.75rem;
+    }
+
+    /* Основной контент */
+    .hero h1,
+    .books-hero h1,
+    .about-hero h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero p,
+    .books-hero p,
+    .about-hero p {
+        font-size: 1.1rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .cta-button {
+        padding: 0.9rem 1.8rem;
+        font-size: 1.05rem;
+    }
+
+    /* Секции */
+    .featured-books,
+    .collection,
+    .about-story,
+    .team-section,
+    .mission-section {
+        padding: 3.5rem 1.2rem;
+    }
+
+    .featured-books h2,
+    .collection h2,
+    .about-story h2,
+    .team-section h2,
+    .mission-section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.8rem;
+    }
+
+    /* Карточки книг */
+    .book-card {
+        max-width: 100%;
+    }
+
+    .book-cover {
+        height: 320px;
+    }
+
+    .book-info {
+        padding: 1.2rem;
+    }
+
+    .book-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .book-info .description {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    /* Фильтры */
+    .category-filters {
+        gap: 0.6rem;
+        margin: 1.2rem 0;
+        padding: 0.6rem;
+    }
+
+    .filter-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+
+    /* Команда */
+    .team-grid {
+        gap: 1.8rem;
+    }
+
+    .member-photo {
+        height: 220px;
+    }
+
+    .member-info {
+        padding: 1.2rem;
+    }
+
+    .member-info h3 {
+        font-size: 1.4rem;
+    }
+
+    .member-info .position {
+        font-size: 1.1rem;
+    }
+
+    .member-info .bio {
+        font-size: 0.95rem;
+    }
+
+    /* Интерактивная книга */
+    .book-page {
+        padding: 0.8rem;
+    }
+
+    .page-content {
+        padding: 0.8rem;
+    }
+
+    .book-page h3 {
+        font-size: 1.5rem;
+    }
+
+    .book-page p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .nav-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+
+    .page-counter {
+        font-size: 0.95rem;
+        padding: 0.5rem 1rem;
+    }
+}

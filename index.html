@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Современные Книги 2025</title>
+    <link rel="stylesheet" href="/Assets/Css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">КнигоМир</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="books.html">Книги</a></li>
+                <li><a href="about.html">О нас</a></li>
+            </ul>
+            <div class="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-nav">
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="books.html">Книги</a></li>
+                <li><a href="about.html">О нас</a></li>
+            </ul>
+        </div>
+        <div class="overlay"></div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 data-aos="fade-up">Добро пожаловать в будущее чтения</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Откройте для себя истории, которые преобразят ваше воображение</p>
+            <button class="cta-button" data-aos="fade-up" data-aos-delay="400">Исследовать книги</button>
+        </div>
+    </section>
+
+    <section id="featured" class="featured-books">
+        <h2 data-aos="fade-up">Популярные книги</h2>
+        <div class="book-container">
+            <div class="book" data-aos="flip-left">
+                <div class="book-cover">
+                    <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500&auto=format" alt="Книга 1">
+                    <div class="book-details">
+                        <h3>Мир Будущего</h3>
+                        <p>Автор: Иван Петров</p>
+                    </div>
+                </div>
+            </div>
+            <div class="book" data-aos="flip-left" data-aos-delay="200">
+                <div class="book-cover">
+                    <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=500&auto=format" alt="Книга 2">
+                    <div class="book-details">
+                        <h3>Цифровые Мечты</h3>
+                        <p>Автор: Мария Иванова</p>
+                    </div>
+                </div>
+            </div>
+            <div class="book" data-aos="flip-left" data-aos-delay="400">
+                <div class="book-cover">
+                    <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?w=500&auto=format" alt="Книга 3">
+                    <div class="book-details">
+                        <h3>Путешествия Разума</h3>
+                        <p>Автор: Александр Смирнов</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="interactive-book" class="interactive-book">
+        <h2 data-aos="fade-up">Интерактивная Книга</h2>
+        <div class="book-wrapper" data-aos="zoom-in">
+            <div class="realistic-book">
+                <div class="book-spine"></div>
+                <div class="page-wrapper">
+                    <div class="book-page page-1">
+                        <div class="page-content">
+                            <h3>Глава 1: Начало Пути</h3>
+                            <div class="page-image">
+                                <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=500&auto=format" alt="Иллюстрация 1">
+                            </div>
+                            <p>В тихом городке на краю леса жила девочка по имени Маша. Она всегда мечтала о невероятных приключениях, и однажды её мечта начала сбываться...</p>
+                        </div>
+                        <div class="page-number">1</div>
+                    </div>
+                    <div class="book-page page-2">
+                        <div class="page-content">
+                            <h3>Глава 2: Волшебный Лес</h3>
+                            <div class="page-image">
+                                <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=500&auto=format" alt="Иллюстрация 2">
+                            </div>
+                            <p>Маша обнаружила тайную дверь между корнями старого дуба. За дверью открывался удивительный мир, полный магии и чудес...</p>
+                        </div>
+                        <div class="page-number">2</div>
+                    </div>
+                    <div class="book-page page-3">
+                        <div class="page-content">
+                            <h3>Глава 3: Новые Друзья</h3>
+                            <div class="page-image">
+                                <img src="https://images.unsplash.com/photo-1490718720478-364a07a997cd?w=500&auto=format" alt="Иллюстрация 3">
+                            </div>
+                            <p>В волшебном лесу Маша встретила удивительных существ: говорящего кота, мудрую сову и весёлого гнома...</p>
+                        </div>
+                        <div class="page-number">3</div>
+                    </div>
+                </div>
+            </div>
+            <div class="book-controls">
+                <button class="nav-btn prev-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <span class="page-counter">Страница <span class="current-page">1</span> из 3</span>
+                <button class="nav-btn next-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="collection" class="collection">
+        <h2 data-aos="fade-up">Наша Коллекция</h2>
+        <div class="collection-grid">
+            <a href="#" class="collection-item" data-aos="fade-up" data-category="fantasy">
+                <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=500&auto=format" alt="Фэнтези">
+                <h3>Фэнтези</h3>
+            </a>
+            <a href="#" class="collection-item" data-aos="fade-up" data-aos-delay="200" data-category="scifi">
+                <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=500&auto=format" alt="Научная фантастика">
+                <h3>Научная фантастика</h3>
+            </a>
+            <a href="#" class="collection-item" data-aos="fade-up" data-aos-delay="400" data-category="mystery">
+                <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=500&auto=format" alt="Детективы">
+                <h3>Детективы</h3>
+            </a>
+        </div>
+    </section>
+
+    <div id="category-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title"></h2>
+            <div id="modal-books" class="modal-books-grid"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>КнигоМир</h3>
+                <p>Исследуя будущее чтения</p>
+            </div>
+            <div class="footer-section">
+                <h3>Связаться с нами</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 КнигоМир. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="/Assets/Js/main.js"></script>
+</body>
+</html>

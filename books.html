@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Книги - КнигоМир</title>
+    <link rel="stylesheet" href="/Assets/Css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">КнигоМир</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="books.html">Книги</a></li>
+                <li><a href="about.html">О нас</a></li>
+            </ul>
+            <div class="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-nav">
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="books.html">Книги</a></li>
+                <li><a href="about.html">О нас</a></li>
+            </ul>
+        </div>
+        <div class="overlay"></div>
+    </nav>
+
+    <section class="books-hero">
+        <div class="hero-content">
+            <h1 data-aos="fade-up">Наша Библиотека</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Откройте для себя мир увлекательных историй</p>
+        </div>
+    </section>
+
+    <section class="books-categories">
+        <div class="container">
+            <h2 data-aos="fade-up">Категории</h2>
+            <div class="category-filters" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="fantasy">Фэнтези</button>
+                <button class="filter-btn" data-filter="scifi">Научная фантастика</button>
+                <button class="filter-btn" data-filter="mystery">Детективы</button>
+                <button class="filter-btn" data-filter="romance">Романы</button>
+            </div>
+
+            <div class="books-grid">
+                <!-- Фэнтези -->
+                <div class="book-card" data-category="fantasy" data-aos="fade-up">
+                    <div class="book-cover">
+                        <img src="https://images.unsplash.com/photo-1479894720049-e024d1c43ddf?w=500&auto=format" alt="Хроники Драконов">
+                    </div>
+                    <div class="book-info">
+                        <h3>Хроники Драконов</h3>
+                        <p class="author">Елена Соколова</p>
+                        <p class="description">Эпическая сага о мире, где драконы и люди живут бок о бок.</p>
+                        <button class="read-more">Читать подробнее</button>
+                    </div>
+                </div>
+
+                <div class="book-card" data-category="fantasy" data-aos="fade-up" data-aos-delay="100">
+                    <div class="book-cover">
+                        <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=500&auto=format" alt="Магическая Академия">
+                    </div>
+                    <div class="book-info">
+                        <h3>Магическая Академия</h3>
+                        <p class="author">Дмитрий Волков</p>
+                        <p class="description">История юной волшебницы, постигающей тайны магии.</p>
+                        <button class="read-more">Читать подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Научная фантастика -->
+                <div class="book-card" data-category="scifi" data-aos="fade-up" data-aos-delay="200">
+                    <div class="book-cover">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&auto=format" alt="Колония Марса">
+                    </div>
+                    <div class="book-info">
+                        <h3>Колония Марса</h3>
+                        <p class="author">Игорь Звездин</p>
+                        <p class="description">Научно-фантастический роман о первых поселенцах на Марсе.</p>
+                        <button class="read-more">Читать подробнее</button>
+                    </div>
+                </div>
+
+                <div class="book-card" data-category="scifi" data-aos="fade-up" data-aos-delay="300">
+                    <div class="book-cover">
+                        <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?w=500&auto=format" alt="Нейросеть">
+                    </div>
+                    <div class="book-info">
+                        <h3>Нейросеть</h3>
+                        <p class="author">Мария Технова</p>
+                        <p class="description">История о мире, где искусственный интеллект обрел сознание.</p>
+                        <button class="read-more">Читать подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Детективы -->
+                <div class="book-card" data-category="mystery" data-aos="fade-up">
+                    <div class="book-cover">
+                        <img src="https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?w=500&auto=format" alt="Тайна Старого Дома">
+                    </div>
+                    <div class="book-info">
+                        <h3>Тайна Старого Дома</h3>
+                        <p class="author">Сергей Детективов</p>
+                        <p class="description">Увлекательный детектив о загадочных происшествиях в старинном особняке.</p>
+                        <button class="read-more">Читать подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Романы -->
+                <div class="book-card" data-category="romance" data-aos="fade-up" data-aos-delay="100">
+                    <div class="book-cover">
+                        <img src="https://images.unsplash.com/photo-1474552226712-ac0f0961a954?w=500&auto=format" alt="Весенний Вальс">
+                    </div>
+                    <div class="book-info">
+                        <h3>Весенний Вальс</h3>
+                        <p class="author">Анна Романова</p>
+                        <p class="description">Романтическая история о любви, преодолевающей все преграды.</p>
+                        <button class="read-more">Читать подробнее</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>КнигоМир</h3>
+                <p>Исследуя будущее чтения</p>
+            </div>
+            <div class="footer-section">
+                <h3>Связаться с нами</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 КнигоМир. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="/Assets/Js/main.js"></script>
+</body>
+</html> 
