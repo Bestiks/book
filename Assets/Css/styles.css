@@ -118,12 +118,14 @@ nav {
     font-size: 1.1rem;
     cursor: pointer;
     transition: var(--transition);
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .cta-button:hover {
     background: white;
     color: var(--accent-color);
+    text-decoration: none !important;
+    transform: translateY(-2px);
 }
 
 /* Featured Books Section */
@@ -1638,11 +1640,14 @@ footer {
     border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-decoration: none !important;
 }
 
 .read-more:hover {
     background: #535bf2;
     transform: translateY(-2px);
+    text-decoration: none !important;
+    color: white;
 }
 
 /* Стили для страницы О нас */
