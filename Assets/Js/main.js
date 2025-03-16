@@ -120,6 +120,21 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+    // Обработчик для ссылок "читать подробнее"
+    const readMoreLinks = document.querySelectorAll('.read-more');
+    readMoreLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault(); // Предотвращаем стандартное поведение ссылки
+            const bookInfo = {
+                title: link.closest('.book-info').querySelector('h3').textContent,
+                author: link.closest('.book-info').querySelector('.author').textContent,
+                description: link.closest('.book-info').querySelector('.description').textContent,
+                image: link.closest('.book-card').querySelector('.book-cover img').src
+            };
+            showBookModal(bookInfo);
+        });
+    });
 });
 
 // Interactive Book Logic
