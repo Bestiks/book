@@ -86,18 +86,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const selectedCategory = button.getAttribute('data-filter');
 
-            // Фильтруем книги
+            // Фильтруем книги с анимацией
             bookCards.forEach(card => {
                 const cardCategory = card.getAttribute('data-category');
+                card.style.transition = 'all 0.3s ease';
                 
                 if (selectedCategory === 'all' || selectedCategory === cardCategory) {
                     card.style.display = 'block';
-                    card.style.opacity = '1';
+                    // Используем setTimeout для плавной анимации появления
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 10);
                 } else {
-                    card.style.display = 'none';
                     card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    // Скрываем карточку только после завершения анимации
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
                 }
             });
+
+            // Прокручиваем к началу сетки книг, если она не видна
+            const gridTop = booksGrid.getBoundingClientRect().top;
+            if (gridTop < 0) {
+                booksGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
     });
 
