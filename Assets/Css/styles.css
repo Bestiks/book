@@ -173,12 +173,18 @@ nav {
 
 .book-details {
     display: inline-block;
-    padding: 8px 16px;
-    background-color: #2c3e50;
+    padding: 0.8rem 1.5rem;
+    background: var(--accent-color);
     color: white;
-    border-radius: 4px;
+    border-radius: 25px;
     margin-top: 10px;
     font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.book-details:hover {
+    background: #535bf2;
+    transform: translateY(-2px);
 }
 
 /* Interactive Book */
